@@ -6,7 +6,6 @@ import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-
 import { setUser } from "../redux/userSlice";
 
 const Login = () => {
@@ -114,6 +113,7 @@ const Login = () => {
               className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105 mb-3 text-sm"
             >
               Login
+              
             </button>
             <div className="text-center text-sm">
               <p className="text-white"> Don't have an account?</p>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -14,9 +14,9 @@ import {
   FaBars,
   FaCaretDown,
 } from "react-icons/fa";
-
+import { setUser } from "../redux/userSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { clearUser } from "../redux/userSlice.js";
+
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,6 +24,12 @@ const Header = () => {
   const user = useSelector((state) => state.app.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (user) {
+      dispatch(setUser(user));
+    }
+  }, [user, dispatch]);
 
   const handleLogout = async () => {
     try {
@@ -36,7 +42,7 @@ const Header = () => {
         }
       );
       if (response.status === 200) {
-        dispatch(clearUser());
+        dispatch(setUser(null));
         toast.success("Logout successful");
         navigate("/login");
       }
@@ -124,7 +130,7 @@ const Header = () => {
               {isUserDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-black border border-gray-700 rounded-md shadow-lg py-1">
                   <Link
-                    to="#"
+                    to="/account"
                     className="block px-4 py-2 text-sm text-white hover:bg-gray-700"
                   >
                     My Account

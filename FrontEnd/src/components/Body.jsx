@@ -1,8 +1,9 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./Login";
-import Home from "./Home";
 import Register from "./Register";
+import MyAccount from "./MyAccount";
+import Browse from "./Browse";
 import Header from "./Header";
 
 const Body = () => {
@@ -20,8 +21,12 @@ const Body = () => {
       element: <Register />,
     },
     {
-      path: "/Home",
-      element: <Home />,
+      path: "/home",
+      element: <Browse />,
+    },
+    {
+      path: "/account",
+      element: <MyAccount />,
     },
   ]);
   return (
