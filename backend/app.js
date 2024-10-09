@@ -8,7 +8,7 @@ import cors from "cors";
 dotenv.config({ path: ".env" });
 
 const corsOptions = {
-    origin: "http://localhost:5173",
+    origin: "https://netflixinfotv.vercel.app/",
     credentials: true,
 };
 
